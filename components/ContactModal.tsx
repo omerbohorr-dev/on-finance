@@ -7,7 +7,7 @@ interface ContactModalProps {
   initialSubject?: string;
 }
 
-export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, initialSubject = 'check' }) => {
+export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, initialSubject = 'finance' }) => {
   if (!isOpen) return null;
 
   const [formData, setFormData] = useState({
@@ -25,9 +25,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
     
     // Map loan types for the message
     const loanTypes: Record<string, string> = {
-      'check': 'הלוואה בשקים',
+      'finance': 'פתרונות פיננסים',
       'gold': 'משכון זהב',
-      'credit': 'הלוואת אשראי',
+      'credit': 'הלוואות בכרטיסי אשראי',
+      'assets': 'הלוואה כנגד נכסים',
+      'mortgage': 'מחזור משכנתאות',
+      'balloon': 'הלוואות בלון',
       'business': 'הלוואה עסקית'
     };
     
@@ -53,7 +56,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
       // Reset and close after a delay
       setTimeout(() => {
         setSubmitted(false);
-        setFormData({ name: '', phone: '', type: 'check', message: '' });
+        setFormData({ name: '', phone: '', type: 'finance', message: '' });
         onClose();
       }, 3000);
     }, 1500);
@@ -133,9 +136,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, ini
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-blue-600 outline-none transition-all"
                 >
-                  <option value="check">הלוואה בשקים</option>
+                  <option value="finance">פתרונות פיננסים</option>
                   <option value="gold">משכון זהב</option>
-                  <option value="credit">הלוואת אשראי</option>
+                  <option value="credit">הלוואות בכרטיסי אשראי</option>
+                  <option value="assets">הלוואה כנגד נכסים</option>
+                  <option value="mortgage">מחזור משכנתאות</option>
+                  <option value="balloon">הלוואות בלון</option>
                   <option value="business">הלוואה עסקית</option>
                 </select>
               </div>

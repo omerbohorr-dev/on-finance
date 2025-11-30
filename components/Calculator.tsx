@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Send } from 'lucide-react';
 
 export const Calculator: React.FC = () => {
   const [amount, setAmount] = useState(50000);
@@ -37,6 +38,18 @@ export const Calculator: React.FC = () => {
           // Allow empty string for better UX while typing
           setter(0);
       }
+  };
+
+  const handleApplyClick = () => {
+    const text = `*בקשה חדשה מהמחשבון באתר*%0A` +
+                 `----------------` +
+                 `%0A*סכום מבוקש:* ₪${amount.toLocaleString()}` +
+                 `%0A*תקופה:* ${months} חודשים` +
+                 `%0A*החזר חודשי משוער:* ₪${monthlyPayment.toLocaleString(undefined, { maximumFractionDigits: 0 })}` +
+                 `%0A%0Aאשמח לקבל פרטים נוספים ובדיקת זכאות.`;
+
+    const whatsappUrl = `https://wa.me/972507474458?text=${text}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -134,9 +147,13 @@ export const Calculator: React.FC = () => {
                     </div>
                 </div>
                 
-                <a href="#contact" className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-blue-600/20 transform hover:-translate-y-1 text-lg">
-                    הגש בקשה עכשיו
-                </a>
+                <button 
+                  onClick={handleApplyClick}
+                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-blue-600/20 transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2"
+                >
+                    <span>הגש בקשה עכשיו</span>
+                    <Send size={20} className="mt-1" />
+                </button>
                 
                 <div className="mt-8 flex items-center justify-center gap-2 text-slate-400 text-sm">
                     <span className="w-2 h-2 rounded-full bg-green-500"></span>

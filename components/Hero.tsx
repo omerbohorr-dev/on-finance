@@ -33,9 +33,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDocuments }) => {
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed font-medium">
-            אנו מספקים מעטפת פיננסית מלאה הכוללת הלוואות על בסיס משכון זהב, ניכיון שקים ופתרונות אשראי חוץ בנקאיים בריבית הוגנת.
-          </p>
+          <div className="p-6 bg-white/60 backdrop-blur-md rounded-2xl border-r-4 border-blue-600 shadow-lg shadow-blue-100/50 max-w-2xl">
+            <p className="text-lg md:text-xl text-slate-800 leading-relaxed font-medium">
+              אנו מספקים מעטפת פיננסית מלאה הכוללת פתרונות פיננסים, משכון זהב, הלוואות בכרטיסי אשראי, הלוואה כנגד נכסים, מחזור משכנתאות והלוואות בלון – עם ליווי צמוד לאורך כל התהליך.
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a
